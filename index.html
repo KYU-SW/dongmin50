@@ -3,325 +3,374 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dongmin Kim | DXP Lab</title>
-    <!-- 폰트어썸 (아이콘) 무료 CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 구글 폰트 (Pretendard 대체용 널리 쓰이는 Noto Sans KR) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
+    <title>포트폴리오 | 김동민</title>
     <style>
-        :root {
-            /* 건양대학교 메인 그린 컬러 톤 적용 */
-            --primary-color: #005a3c; 
-            --primary-light: #007a52;
-            --primary-dark: #003d29;
-            --text-color: #333333;
-            --text-light: #666666;
-            --bg-color: #f4f7f6;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-
+        /* 기본 스타일 리셋 및 폰트 설정 */
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            padding-top: 70px; /* 네비게이션 바 높이만큼 여백 */
         }
 
-        /* Top Navigation Bar */
-        .navbar {
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 네비게이션 바 */
+        header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 5%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             z-index: 1000;
         }
 
-        .nav-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            gap: 10px;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3748;
         }
 
         .nav-links {
-            list-style: none;
             display: flex;
+            list-style: none;
             gap: 20px;
         }
 
         .nav-links a {
-            text-decoration: none;
-            color: var(--text-color);
             font-weight: 500;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: var(--transition);
+            color: #4a5568;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            background-color: var(--bg-color);
-            color: var(--primary-color);
+            color: #1e90ff;
         }
 
-        .nav-links a.active {
-            background-color: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-        }
-
-        .hero .role {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .container {
+        /* 공통 섹션 스타일 */
+        section {
+            padding: 100px 20px 80px 20px;
             max-width: 1100px;
-            margin: -3rem auto 3rem;
-            padding: 0 20px;
-            position: relative;
+            margin: 0 auto;
         }
 
-        /* About Section */
-        .about-card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .about-card h2 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Cards Layout (CSS Grid) */
         .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--text-color);
+            position: relative;
+            color: #2d3748;
         }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #1e90ff;
+            margin: 10px auto 0 auto;
+            border-radius: 2px;
         }
 
-        .card {
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .card-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-content i {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .card-content h3 {
-            margin-bottom: 0.8rem;
-            color: var(--text-color);
-        }
-
-        .card-content p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-        }
-
-        /* Contact Section */
-        .contact-section {
+        /* 홈 / 히어로 섹션 */
+        #home {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background: var(--white);
-            padding: 3rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            min-height: 100vh;
+            padding-top: 60px;
         }
 
-        .contact-links {
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin-bottom: 25px;
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            align-items: center;
+            font-size: 3rem;
+            color: #2a6abe;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 50%;
+        }
+
+        #home h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #1a202c;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 30px;
         }
 
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
+            display: inline-block;
+            background-color: #1e90ff;
+            color: white;
+            padding: 12px 28px;
             border-radius: 30px;
-            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #1669b4;
+            transform: translateY(-2px);
+        }
+
+        /* 소개 섹션 */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+        }
+
+        .about-text h3 {
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            display: flex;
+        }
+
+        .info-list li strong {
+            width: 100px;
+            color: #4a5568;
+        }
+
+        /* 기술 스택 섹션 */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
             font-weight: 500;
-            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            color: #4a5568;
         }
 
-        .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+        /* 프로젝트 섹션 */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white);
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.3s;
         }
 
-        .btn-fill {
-            background: var(--primary-color);
-            color: var(--white);
+        .project-card:hover {
+            transform: translateY(-5px);
         }
 
-        .btn-fill:hover {
-            background: var(--primary-dark);
+        .project-img {
+            height: 180px;
+            background-color: #edf2f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #a0aec0;
+            font-weight: 500;
         }
 
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+            color: #2d3748;
+        }
+
+        .project-info p {
+            color: #718096;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            height: 70px;
+            overflow: hidden;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .project-tags span {
+            font-size: 0.8rem;
+            background-color: #e0f2ff;
+            color: #1e90ff;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* 푸터 */
         footer {
+            background-color: #2d3748;
+            color: #a0aec0;
             text-align: center;
-            padding: 2rem 0;
-            color: var(--text-light);
+            padding: 40px 20px;
+            margin-top: 60px;
             font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
         }
     </style>
 </head>
 <body>
 
-<!-- Top Navigation -->
-<nav class="navbar">
-    <a href="#" class="nav-logo">
-        <i class="fa-solid fa-vr-cardboard"></i> DXP Lab
-    </a>
-    <ul class="nav-links">
-        <li><a href="#" class="active"><i class="fa-solid fa-wand-magic-sparkles"></i> 현재 페이지 (Modern)</a></li>
-        <!-- 이전 페이지 파일명을 old.html 혹은 previous.html 로 맞추어 학생들에게 링크 이동을 시연하시면 됩니다 -->
-        <li><a href="index_initial.html"><i class="fa-solid fa-clock-rotate-left"></i> 이전 페이지 (Basic)</a></li>
-    </ul>
-</nav>
+    <header>
+        <nav class="nav-container">
+            <div class="logo">PORTFOLIO</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<!-- Hero Section -->
-<header class="hero">
-    <h1>Hanseob Kim</h1>
-    <p class="role">Professor & Director of DXP Lab</p>
-</header>
-
-<main class="container">
-    <!-- About Section -->
-    <section class="about-card">
-        <h2><i class="fa-solid fa-user-tie"></i> About Me</h2>
-        <p>
-            인간과 컴퓨터의 상호작용(HCI)을 연구하며, 가상현실(VR) 및 증강현실(AR) 환경에서의 
-            사용자 경험 개선과 <strong>사이버멀미(Cybersickness) 저감 기술</strong>에 집중하고 있습니다. 
-            데이터 전처리 및 분석 역량을 바탕으로 국방(National Defense) 및 의료 등 다양한 도메인을 위한 초실감형 몰입 기술을 탐구합니다.
-        </p>
+    <section id="home">
+        <div class="profile-img"><img src="assets/KakaoTalk_20260623_224713372.jpg" alt="Profile"></div>
+        <h1>안녕하세요, 국방 XR 학부 김동민입니다.</h1>
+        <p>새로운 도전을 즐기며 끈기 있게 성장하는 게임 개발자가 꿈입니다.</p>
+        <a href="#projects" class="btn">프로젝트 보기</a>
     </section>
 
-    <h2 class="section-title">Research Interests</h2>
-    
-    <!-- Cards Section -->
-    <section class="card-grid">
-        <!-- Card 1 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?auto=format&fit=crop&w=600&q=80" alt="VR Headset" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h3>XR for National Defense</h3>
-                <p>국방 훈련을 위한 초실감형 메타버스 인터페이스 연구 및 인공지능 기반 인간 검증 데이터셋 구축.</p>
-            </div>
-        </article>
+    <hr style="border: 0; height: 1px; background: #e2e8f0;">
 
-        <!-- Card 2 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Analysis" class="card-content-img card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-eye"></i>
-                <h3>Cybersickness Mitigation</h3>
-                <p>시선 추적(Eye-tracking) 및 시각/햅틱 피드백을 활용한 자율주행 및 VR 환경 내 사이버멀미 분석 및 저감 솔루션.</p>
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <h3>"국방XR 기술력으로 압도적 몰입감을 만드는 예비 게임 개발자"</h3>
+                <p>국방XR학부에서 컴퓨터공학의 기본기를 다지며 가상현실(VR)과 인터랙션 기술을 깊이 있게 배우고 있습니다. 기술의 작동 원리를 파고드는 탐구심을 바탕으로, 단순한 플레이를 넘어 유저가 온전히 몰입할 수 있는 직관적이고 완성도 높은 게임을 만들고자 합니다.</p>
+            <div>
+                <ul class="info-list">
+                    <li><strong>이름</strong> <span>김동민 (Kim Dong-min)</span></li>
+                    <li><strong>소속</strong> <span>건양대학교 국방 XR 학부 (1학년 재학)</span></li>
+                    <li><strong>이메일</strong> <span>aaa01034202773@gmail.com</span></li>
+                    <li><strong>전화번호</strong> <span>010-8432-2773</span></li>
+                    <li><strong>GitHub</strong> <a href="https://github.com" target="_blank" style="color:#3182ce;">github.com/gildong</a></li>
+                </ul>
             </div>
-        </article>
-
-        <!-- Card 3 -->
-        <article class="card">
-            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" alt="Medical Technology" class="card-img">
-            <div class="card-content">
-                <i class="fa-solid fa-bed-pulse"></i>
-                <h3>Digital Therapeutics</h3>
-                <p>병상 환자(Bedridden Patients) 및 교통약자를 위한 VR 기반 치료/편의 기술 및 상호작용 인터페이스 설계.</p>
-            </div>
-        </article>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <h2>Let's Connect</h2>
-        <p style="margin-top: 10px; color: var(--text-light);">연구 협력이나 DXP 연구실에 관심이 있으시다면 언제든 연락주세요.</p>
-        <div class="contact-links">
-            <a href="mailto:example@korea.ac.kr" class="btn btn-fill">
-                <i class="fa-solid fa-envelope"></i> Email Me
-            </a>
-            <a href="https://github.com" class="btn btn-outline" target="_blank">
-                <i class="fa-brands fa-github"></i> GitHub
-            </a>
-            <a href="#" class="btn btn-outline">
-                <i class="fa-solid fa-globe"></i> Lab Website
-            </a>
         </div>
     </section>
-</main>
 
-<footer>
-    <p>&copy; 2026 Hanseob Kim & DXP Lab. All rights reserved.</p>
-</footer>
+    <section id="skills" style="background-color: #edf2f7; max-width: 100%; padding-left: calc((100% - 1100px)/2 + 20px); padding-right: calc((100% - 1100px)/2 + 20px);">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-container">
+                <div class="skill-badge">Python</div>
+                <div class="skill-badge">Git / GitHub</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="project-grid">
+            
+            <div class="project-card">
+                <div class="project-img">Project Image 1</div>
+                <div class="project-info">
+                    <h3>전공수업 1</h3>
+                    <p>메타버스프로그래밍</p>
+                    <div class="project-tags">
+                        <span>로블록스 스튜디오</span>
+                        <span>Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">Project Image 2</div>
+                <div class="project-info">
+                    <h3>전공수업  2</h3>
+                    <p>실감미디어컴퓨팅개론</p>
+                    <div class="project-tags">
+                        <span>XR 기술조사 발표</span>
+                        <span>실감미디어</span>
+                        <span>인공지능</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-img">Project Image 3</div>
+                <div class="project-info">
+                    <h3>전공수업 3</h3>
+                    <p>XR콘텐츠문화지형도</p>
+                    <div class="project-tags">
+                        <span>XR사운드맵 만들기</span>
+                        <span>백제문화 활용 콘텐츠</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Kim Dong-min. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">본 페이지는 개인 포트폴리오 용도로 제작되었습니다.</p>
+    </footer>
 
 </body>
 </html>
